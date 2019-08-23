@@ -4,7 +4,7 @@ package start.common;
  * created by Rock-Ayl on 2019-8-23
  * 基础-道具
  */
-public class tool {
+public abstract class tool {
 
     //道具id
     int id;
