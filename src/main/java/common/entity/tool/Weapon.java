@@ -1,6 +1,6 @@
-package common.entity;
+package common.entity.tool;
 
-import common.entity.template.Tool;
+import common.entity.tool.template.Tool;
 
 /**
  * created by Rock-Ayl on 2019-8-23

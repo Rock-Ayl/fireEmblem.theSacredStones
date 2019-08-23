@@ -1,4 +1,4 @@
-package common.entity.template;
+package common.entity.tool.template;
 
 /**
  * created by Rock-Ayl on 2019-8-23

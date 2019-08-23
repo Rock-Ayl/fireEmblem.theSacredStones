@@ -1,4 +1,4 @@
-package common.entity;
+package common.entity.persion;
 
 /**
  * created by Rock-Ayl on 2019-8-23
