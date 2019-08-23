@@ -2,7 +2,7 @@ package common.entity.template;
 
 /**
  * created by Rock-Ayl on 2019-8-23
- * 基础-道具
+ * 基础-道具,抽象,不可被实例化
  */
 public abstract class Tool {
 

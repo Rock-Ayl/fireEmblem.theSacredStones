@@ -2,7 +2,7 @@ package common.entity;
 
 /**
  * created by Rock-Ayl on 2019-8-23
- * 基础-人
+ * 基础-人,可被实例化
  */
 public class Persion {
 
