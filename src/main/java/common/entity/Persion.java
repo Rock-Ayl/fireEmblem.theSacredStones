@@ -1,10 +1,10 @@
-package start.common;
+package common.entity;
 
 /**
  * created by Rock-Ayl on 2019-8-23
  * 基础-人
  */
-public class persion {
+public class Persion {
 
     //人物id
     int id;
