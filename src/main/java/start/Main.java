@@ -11,14 +11,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+        ImageIcon img=new ImageIcon("E:\\work\\fireEmblem.theSacredStones\\src\\main\\resources\\Characters\\Cursor.png");
         //组件
-        JLabel label = new JLabel("hello world!");
+        JLabel label = new JLabel(img);
         //设置水平对齐
         label.setHorizontalAlignment(SwingConstants.CENTER);
         //设置垂直对齐
         label.setVerticalAlignment(SwingConstants.CENTER);
         //设置组件 x y 轴  宽高
-        label.setBounds(0, 75, 400, 20);
+        label.setBounds(0, 0, 128, 128);
 
         //容器
         JPanel panel = new JPanel();
@@ -39,6 +41,9 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //设置键盘监听器
         frame.addKeyListener(new KeyInput());
+
+
+        label.setBounds(0, 0, 128, 128);
 
     }
 
