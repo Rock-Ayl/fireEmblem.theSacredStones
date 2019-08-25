@@ -1,4 +1,4 @@
-package common.test;
+package test;
 
 public class Test {
 

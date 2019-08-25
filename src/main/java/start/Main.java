@@ -1,5 +1,7 @@
 package start;
 
+import common.input.KeyInput;
+
 import javax.swing.*;
 
 /**
@@ -35,6 +37,8 @@ public class Main {
         //设置界面是否可见
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //设置键盘监听器
+        frame.addKeyListener(new KeyInput());
 
     }
 
