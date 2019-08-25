@@ -7,4 +7,13 @@ import common.entity.tool.template.Tool;
  * 基础-武器实体,继承于道具,可被实例化
  */
 public class Weapon extends Tool {
+
+    //武器组
+    /*
+     剑01 枪00
+     斧00 弓00
+     杖00 理00
+     光00 暗00
+     */
+
 }

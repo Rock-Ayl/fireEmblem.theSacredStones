@@ -12,5 +12,6 @@ public abstract class Tool {
     String name;
     //道具描述
     String Description;
-
+    //数量  -1为无限
+    int num;
 }
