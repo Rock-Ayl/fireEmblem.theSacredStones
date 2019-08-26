@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ImageIcon img = new ImageIcon(Const.Test);
+        ImageIcon img = new ImageIcon(Const.CursorPath);
         //组件
         JLabel label = new JLabel(img);
         //设置水平对齐

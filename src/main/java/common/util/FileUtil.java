@@ -9,6 +9,14 @@ import org.apache.commons.io.FilenameUtils;
 public class FileUtil {
 
     /**
+     * 传入编号和文件名,生成带编号的文件名
+     * eg:  /work/ayl.doc → /work/ayl_1.doc
+     */
+    public static String setNumForFile(String filePath, int num) {
+        return getFileFullPath(filePath) + getFileBaseName(filePath) + "_" + num + "." + getFileExtension(filePath);
+    }
+
+    /**
      * 获取文件路径中去除目录和后缀后的文件名
      * eg:  /work/ayl.doc → ayl
      */
