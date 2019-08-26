@@ -13,4 +13,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    //apache common io工具包
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
