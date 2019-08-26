@@ -43,8 +43,6 @@ public class Main {
         frame.addKeyListener(new KeyInput());
 
 
-        label.setBounds(0, 0, 128, 128);
-
     }
 
 }
