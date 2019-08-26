@@ -1,5 +1,6 @@
 package start;
 
+import common.Const;
 import common.input.KeyInput;
 
 import javax.swing.*;
@@ -11,8 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        ImageIcon img=new ImageIcon("E:\\work\\fireEmblem.theSacredStones\\src\\main\\resources\\Characters\\Cursor.png");
+        ImageIcon img = new ImageIcon(Const.Test);
         //组件
         JLabel label = new JLabel(img);
         //设置水平对齐
