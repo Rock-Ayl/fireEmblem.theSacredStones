@@ -69,12 +69,18 @@ public class Cursor implements Runnable {
         this.label = VOIDCursor();
     }
 
+    //初始化光标线程对象
+    public static Cursor VOID(JFrame frame, int time, int x, int y, int w, int h) {
+        return new Cursor(frame, time, x, y, w, h).start();
+    }
+
     //启动该实例线程
-    public void start() {
+    public Cursor start() {
         //将组件组装至面板中
         frame.add(this.label);
         //启动线程
         new Thread(this).start();
+        return this;
     }
 
     //启动该实例线程
@@ -101,17 +107,56 @@ public class Cursor implements Runnable {
             while (isRun) {
                 //光标刷新延迟
                 Thread.sleep(time);
-                //删除旧光标
-                frame.remove(label);
-                //新光标
-                label = VOIDCursor();
-                //放入面板
-                frame.add(label);
-                //刷新面板
-                frame.repaint();
+                //刷新
+                Refresh();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    //刷新状态
+    public void Refresh() {
+        //删除旧光标
+        frame.remove(label);
+        //新光标
+        label = VOIDCursor();
+        //放入面板
+        frame.add(label);
+        //刷新面板
+        frame.repaint();
+    }
+
+    //上移
+    public void moveUp() {
+        y = y - 10;
+        if (isRun) {
+            Refresh();
+        }
+    }
+
+    //下移
+    public void moveDown() {
+        y = y + 10;
+        if (isRun) {
+            Refresh();
+        }
+    }
+
+    //左移
+    public void moveLeft() {
+        x = x - 10;
+        if (isRun) {
+            Refresh();
+        }
+    }
+
+    //右移
+    public void moveRight() {
+        x = x + 10;
+        if (isRun) {
+            Refresh();
+        }
+    }
+
 }

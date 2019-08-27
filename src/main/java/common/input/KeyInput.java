@@ -1,5 +1,7 @@
 package common.input;
 
+import start.Main;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -9,14 +11,6 @@ import java.awt.event.KeyListener;
  */
 public class KeyInput implements KeyListener {
 
-    /**
-     * 上:38
-     * 下:40
-     * 左:37
-     * 右:39
-     *
-     * @param e
-     */
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -24,7 +18,30 @@ public class KeyInput implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("输入:" + e.getKeyCode());
+        int keyCode = e.getKeyCode();
+        System.out.println("输入:" + keyCode);
+        /**
+         * 上:38
+         * 下:40
+         * 左:37
+         * 右:39
+         *
+         * @param e
+         */
+        switch (keyCode) {
+            case 37:
+                Main.userCursor.moveLeft();
+                break;
+            case 38:
+                Main.userCursor.moveUp();
+                break;
+            case 39:
+                Main.userCursor.moveRight();
+                break;
+            case 40:
+                Main.userCursor.moveDown();
+                break;
+        }
     }
 
     @Override
