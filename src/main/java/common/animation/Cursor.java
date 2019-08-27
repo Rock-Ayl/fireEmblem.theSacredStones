@@ -32,6 +32,8 @@ public class Cursor implements Runnable {
     int w;
     //光标高
     int h;
+    //光标移动距离
+    int mov = 10;
 
     //初始化图片组
     private void initImgMap() {
@@ -129,7 +131,7 @@ public class Cursor implements Runnable {
 
     //上移
     public void moveUp() {
-        y = y - 10;
+        y = y - mov;
         if (isRun) {
             Refresh();
         }
@@ -137,7 +139,7 @@ public class Cursor implements Runnable {
 
     //下移
     public void moveDown() {
-        y = y + 10;
+        y = y + mov;
         if (isRun) {
             Refresh();
         }
@@ -145,7 +147,7 @@ public class Cursor implements Runnable {
 
     //左移
     public void moveLeft() {
-        x = x - 10;
+        x = x - mov;
         if (isRun) {
             Refresh();
         }
@@ -153,7 +155,7 @@ public class Cursor implements Runnable {
 
     //右移
     public void moveRight() {
-        x = x + 10;
+        x = x + mov;
         if (isRun) {
             Refresh();
         }

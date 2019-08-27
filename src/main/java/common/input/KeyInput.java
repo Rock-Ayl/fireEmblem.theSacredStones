@@ -30,16 +30,16 @@ public class KeyInput implements KeyListener {
          */
         switch (keyCode) {
             case 37:
-                Main.userCursor.moveLeft();
+                Main.CharacterCursor.moveLeft();
                 break;
             case 38:
-                Main.userCursor.moveUp();
+                Main.CharacterCursor.moveUp();
                 break;
             case 39:
-                Main.userCursor.moveRight();
+                Main.CharacterCursor.moveRight();
                 break;
             case 40:
-                Main.userCursor.moveDown();
+                Main.CharacterCursor.moveDown();
                 break;
         }
     }

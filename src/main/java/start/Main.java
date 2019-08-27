@@ -10,27 +10,29 @@ import javax.swing.*;
  */
 public class Main {
 
-    //光标
-    public static Cursor userCursor;
-    //界面
-    public static JFrame frame;
+    //人物光标
+    public static Cursor CharacterCursor;
+    //界面面板+大小
+    public static JFrame Frame;
+    public static int Width = 400;
+    public static int Height = 300;
 
     public static void main(String[] args) {
 
         //创建界面-边框及标题
-        frame = new JFrame("火焰之纹章-圣光之魔石");
-        frame.pack();
+        Frame = new JFrame("火焰之纹章-圣光之魔石");
+        Frame.pack();
         //设置界面宽高
-        frame.setSize(400, 300);
+        Frame.setSize(Width, Height);
         //设置界面是否可见
-        frame.setVisible(true);
+        Frame.setVisible(true);
         //设置用户单击窗口的关闭按钮时程序执行的操作(关系窗口)
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //设置键盘监听器
-        frame.addKeyListener(new KeyInput());
+        Frame.addKeyListener(new KeyInput());
 
         //增加一个光标实例并启动
-        userCursor = Cursor.VOID(frame, 200, 100, 100, 32, 32);
+        CharacterCursor = Cursor.VOID(Frame, 200, 100, 100, 32, 32);
 
     }
 
