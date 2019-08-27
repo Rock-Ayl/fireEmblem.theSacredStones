@@ -32,7 +32,7 @@ public class Main {
         Frame.addKeyListener(new KeyInput());
 
         //增加一个光标实例并启动
-        CharacterCursor = Cursor.VOID(Frame, 200, 100, 100, 32, 32);
+        CharacterCursor = Cursor.VOID(Frame, 100, 100);
 
     }
 

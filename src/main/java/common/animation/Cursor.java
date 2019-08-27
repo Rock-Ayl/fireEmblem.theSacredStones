@@ -22,16 +22,16 @@ public class Cursor implements Runnable {
     JLabel label;
     //光标图标编号
     int num = 1;
-    //光标刷新时间
-    int time;
+    //光标刷新时间 1000=1秒
+    int time = 200;
     //光标x轴坐标
     int x;
     //光标y轴坐标
     int y;
-    //光标宽
-    int w;
-    //光标高
-    int h;
+    //光标图宽
+    int w = 32;
+    //光标图高
+    int h = 32;
     //光标移动距离
     int mov = 10;
 
@@ -57,23 +57,20 @@ public class Cursor implements Runnable {
     }
 
     //初始化光标线程对象
-    public Cursor(JFrame frame, int time, int x, int y, int w, int h) {
+    public Cursor(JFrame frame, int x, int y) {
         //初始化图片组
         initImgMap();
         //其他参数
         this.isRun = true;
-        this.time = time;
         this.frame = frame;
         this.x = x;
         this.y = y;
-        this.w = w;
-        this.h = h;
         this.label = VOIDCursor();
     }
 
     //初始化光标线程对象
-    public static Cursor VOID(JFrame frame, int time, int x, int y, int w, int h) {
-        return new Cursor(frame, time, x, y, w, h).start();
+    public static Cursor VOID(JFrame frame, int x, int y) {
+        return new Cursor(frame, x, y).start();
     }
 
     //启动该实例线程
