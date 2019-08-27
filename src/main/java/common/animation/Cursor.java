@@ -115,8 +115,8 @@ public class Cursor implements Runnable {
         }
     }
 
-    //刷新状态
-    public void Refresh() {
+    //刷新状态,加锁,防止多帧
+    public synchronized void Refresh() {
         //删除旧光标
         frame.remove(label);
         //新光标
