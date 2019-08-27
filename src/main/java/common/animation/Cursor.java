@@ -4,13 +4,17 @@ import common.Const;
 import common.util.FileUtil;
 
 import javax.swing.*;
+import java.util.HashMap;
 
 /**
  * created by Rock-Ayl on 2019-8-27
- * 一个光标实体
+ * 一个光标实体demo
+ * todo 该demo用来学习swing
  */
 public class Cursor implements Runnable {
 
+    //光标图片组
+    HashMap<Integer, ImageIcon> imgMap;
     //光标放置的面板
     JFrame frame;
     //光标对象
@@ -28,8 +32,31 @@ public class Cursor implements Runnable {
     //光标高
     int h;
 
+    //初始化图片组
+    public void initImgMap() {
+        imgMap = new HashMap<>();
+        for (int i = 1; i <= 9; i++) {
+            //组装
+            imgMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.CursorPath, i)));
+        }
+    }
+
+    //获取光标图片
+    public ImageIcon getImg() {
+        //获取图片
+        ImageIcon img = imgMap.get(num);
+        //编号++
+        num++;
+        if (num >= 9) {
+            num = 1;
+        }
+        return img;
+    }
+
     //初始化光标线程对象
     public Cursor(JFrame frame, int time, int x, int y, int w, int h) {
+        //初始化图片组及各项参数
+        initImgMap();
         this.time = time;
         this.frame = frame;
         this.x = x;
@@ -38,20 +65,12 @@ public class Cursor implements Runnable {
         this.h = h;
         this.label = VOIDCursor();
         frame.add(this.label);
-
     }
 
     //创建一个光标
     private JLabel VOIDCursor() {
-        //找到当前编号的光标图片
-        ImageIcon img = new ImageIcon(FileUtil.setNumForFile(Const.CursorPath, num));
-        //编号++
-        num++;
-        if (num >= 9) {
-            num = 1;
-        }
         //组件
-        JLabel cursor = new JLabel(img);
+        JLabel cursor = new JLabel(getImg());
         //设置组件 x y 轴  宽高
         cursor.setBounds(x, y, w, h);
         //返回光标
