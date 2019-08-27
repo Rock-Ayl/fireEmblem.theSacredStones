@@ -35,6 +35,10 @@ public class Main {
         Cursor cur2 = new Cursor(frame, 1000, 30, 30, 32, 32);
         new Thread(cur2).start();
 
+        //增加一个光标线程3
+        Cursor cur3 = new Cursor(frame, 200, 100, 100, 32, 32);
+        new Thread(cur3).start();
+
     }
 
 }

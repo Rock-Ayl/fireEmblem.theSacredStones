@@ -90,7 +90,7 @@ public class Cursor implements Runnable {
                 //放入面板
                 frame.add(label);
                 //刷新面板
-                frame.setVisible(true);
+                frame.repaint();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
