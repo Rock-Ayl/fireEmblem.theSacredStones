@@ -10,7 +10,9 @@ import javax.swing.*;
  */
 public class Main {
 
+    //光标
     public static Cursor userCursor;
+    //界面
     public static JFrame frame;
 
     public static void main(String[] args) {
