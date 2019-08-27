@@ -52,10 +52,6 @@ public class Cursor implements Runnable {
         }
         //组件
         JLabel cursor = new JLabel(img);
-        //设置水平对齐
-        cursor.setHorizontalAlignment(SwingConstants.CENTER);
-        //设置垂直对齐
-        cursor.setVerticalAlignment(SwingConstants.CENTER);
         //设置组件 x y 轴  宽高
         cursor.setBounds(x, y, w, h);
         //返回光标
