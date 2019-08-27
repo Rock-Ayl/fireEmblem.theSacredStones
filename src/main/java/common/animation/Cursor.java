@@ -66,7 +66,7 @@ public class Cursor implements Runnable {
                 Thread.sleep(time);
                 //删除旧光标
                 frame.remove(label);
-                //新光爆
+                //新光标
                 label = VOIDCursor();
                 //放入面板
                 frame.add(label);
