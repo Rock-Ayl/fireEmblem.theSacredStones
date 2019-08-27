@@ -8,6 +8,10 @@ import common.entity.tool.template.Tool;
  */
 public class Weapon extends Tool {
 
+    //是否可装备/持有
+    boolean isHold;
+
+
     //武器组
     /*
      剑01 枪00
