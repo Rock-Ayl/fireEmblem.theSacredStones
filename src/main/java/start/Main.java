@@ -13,7 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         //创建界面-边框及标题
         JFrame frame = new JFrame("火焰之纹章-圣光之魔石");
         frame.pack();
@@ -26,18 +25,17 @@ public class Main {
         //设置键盘监听器
         frame.addKeyListener(new KeyInput());
 
-
         //增加一个光标线程1
         Cursor cur = new Cursor(frame, 500, 0, 0, 32, 32);
-        new Thread(cur).start();
 
         //增加一个光标线程2
         Cursor cur2 = new Cursor(frame, 1000, 30, 30, 32, 32);
-        new Thread(cur2).start();
+        cur2.start();
+        cur2.stop();
 
         //增加一个光标线程3
         Cursor cur3 = new Cursor(frame, 200, 100, 100, 32, 32);
-        new Thread(cur3).start();
+        cur3.start();
 
     }
 

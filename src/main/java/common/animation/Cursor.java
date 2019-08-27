@@ -12,6 +12,8 @@ import java.util.HashMap;
  */
 public class Cursor implements Runnable {
 
+    //线程是否运行
+    boolean isRun;
     //光标图片组
     HashMap<Integer, ImageIcon> imgMap;
     //光标放置的面板
@@ -32,7 +34,7 @@ public class Cursor implements Runnable {
     int h;
 
     //初始化图片组
-    public void initImgMap() {
+    private void initImgMap() {
         imgMap = new HashMap<>();
         for (int i = 1; i <= 9; i++) {
             //组装
@@ -41,7 +43,7 @@ public class Cursor implements Runnable {
     }
 
     //获取光标图片
-    public ImageIcon getImg() {
+    private ImageIcon getImg() {
         //获取图片
         ImageIcon img = imgMap.get(num);
         //编号++
@@ -54,8 +56,10 @@ public class Cursor implements Runnable {
 
     //初始化光标线程对象
     public Cursor(JFrame frame, int time, int x, int y, int w, int h) {
-        //初始化图片组及各项参数
+        //初始化图片组
         initImgMap();
+        //其他参数
+        this.isRun = true;
         this.time = time;
         this.frame = frame;
         this.x = x;
@@ -63,7 +67,22 @@ public class Cursor implements Runnable {
         this.w = w;
         this.h = h;
         this.label = VOIDCursor();
+    }
+
+    //启动该实例线程
+    public void start() {
+        //将组件组装至面板中
         frame.add(this.label);
+        //启动线程
+        new Thread(this).start();
+    }
+
+    //启动该实例线程
+    public void stop() {
+        //停止线程
+        isRun = false;
+        //面板删除组件
+        frame.remove(label);
     }
 
     //创建一个新光标
@@ -79,7 +98,7 @@ public class Cursor implements Runnable {
     @Override
     public void run() {
         try {
-            while (true) {
+            while (isRun) {
                 //光标刷新延迟
                 Thread.sleep(time);
                 //删除旧光标
