@@ -1,6 +1,5 @@
 package start;
 
-import common.Const;
 import common.animation.Cursor;
 import common.input.KeyInput;
 
