@@ -9,7 +9,6 @@ import java.util.HashMap;
 /**
  * created by Rock-Ayl on 2019-8-27
  * 一个光标实体demo
- * todo 该demo用来学习swing
  */
 public class Cursor implements Runnable {
 
@@ -67,7 +66,7 @@ public class Cursor implements Runnable {
         frame.add(this.label);
     }
 
-    //创建一个光标
+    //创建一个新光标
     private JLabel VOIDCursor() {
         //组件
         JLabel cursor = new JLabel(getImg());

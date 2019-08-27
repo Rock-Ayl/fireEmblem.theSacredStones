@@ -19,7 +19,7 @@ public class Const {
     //资源路径
     public final static String ResourcesPath = SystemProjectPath + ProjectName + SystemSeparator + "src/main/resources/";
 
-    //todo 测试用图路径
+    //todo 光标用例原图
     public final static String CursorPath = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/cursor/Cursor.png");
 
     /**
