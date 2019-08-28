@@ -23,7 +23,7 @@ public class Cursor implements Runnable {
     //光标对象
     JLabel label;
     //光标图标编号
-    int num = 1;
+    int num;
     //光标刷新时间 1000=1秒
     int time = 200;
     //光标x轴坐标
@@ -36,6 +36,8 @@ public class Cursor implements Runnable {
     int h = 32;
     //光标移动距离
     int mov = 10;
+    //光标状态  0:无选中   1:敌方   2:我方
+    int type;
 
     //初始化图片组
     private void initImgMap() {
@@ -48,18 +50,29 @@ public class Cursor implements Runnable {
 
     //获取光标图片
     private ImageIcon getImg() {
-        //获取图片
-        ImageIcon img = imgMap.get(num);
-        //编号++
-        num++;
-        if (num >= 9) {
-            num = 1;
+        //根据光标type获取图片
+        ImageIcon img;
+        if (type == 0) {
+            num++;
+            if (num >= 5 || num < 1) {
+                num = 1;
+            }
+        } else if (type == 1) {
+            num++;
+            if (num >= 9 || num < 5) {
+                num = 5;
+            }
+        } else if (type == 2) {
+            num = 9;
+        } else {
+            System.out.println("光标状态出错.");
         }
+        img = imgMap.get(num);
         return img;
     }
 
     //初始化光标线程对象
-    public Cursor(JFrame frame, int x, int y) {
+    public Cursor(JFrame frame, int x, int y, int type) {
         //初始化图片组
         initImgMap();
         //其他参数
@@ -68,12 +81,13 @@ public class Cursor implements Runnable {
         this.frame = frame;
         this.x = x;
         this.y = y;
+        this.type = type;
         this.label = VOIDCursor();
     }
 
     //初始化光标线程对象
-    public static Cursor VOID(JFrame frame, int x, int y) {
-        return new Cursor(frame, x, y).start();
+    public static Cursor VOID(JFrame frame, int x, int y, int type) {
+        return new Cursor(frame, x, y, type).start();
     }
 
     //启动该实例线程
@@ -183,6 +197,11 @@ public class Cursor implements Runnable {
             x = x + mov;
             Refresh();
         }
+    }
+
+    //切换光标
+    public void switchType(int type) {
+        this.type = type;
     }
 
 }

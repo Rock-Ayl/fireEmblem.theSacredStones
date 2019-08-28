@@ -54,6 +54,15 @@ public class KeyInput implements KeyListener {
             case 67:
                 Main.CharacterCursor.clear();
                 break;
+            case 65:
+                Main.CharacterCursor.switchType(0);
+                break;
+            case 83:
+                Main.CharacterCursor.switchType(1);
+                break;
+            case 68:
+                Main.CharacterCursor.switchType(2);
+                break;
         }
     }
 
