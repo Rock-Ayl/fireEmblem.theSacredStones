@@ -63,6 +63,9 @@ public class KeyInput implements KeyListener {
             case 68:
                 Main.CharacterCursor.switchType(2);
                 break;
+            case 81:
+                Main.CharacterCursor.switchXY(30,50);
+                break;
         }
     }
 

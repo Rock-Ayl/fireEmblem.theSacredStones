@@ -199,9 +199,15 @@ public class Cursor implements Runnable {
         }
     }
 
-    //切换光标
+    //切换光标状态
     public void switchType(int type) {
         this.type = type;
+    }
+
+    //切换光标坐标
+    public void switchXY(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
 }
