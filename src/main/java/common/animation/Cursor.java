@@ -14,6 +14,8 @@ public class Cursor implements Runnable {
 
     //线程是否运行
     boolean isRun;
+    //是否清除线程
+    boolean isClear;
     //光标图片组
     HashMap<Integer, ImageIcon> imgMap;
     //光标放置的面板
@@ -62,6 +64,7 @@ public class Cursor implements Runnable {
         initImgMap();
         //其他参数
         this.isRun = false;
+        this.isClear = false;
         this.frame = frame;
         this.x = x;
         this.y = y;
@@ -81,13 +84,14 @@ public class Cursor implements Runnable {
             frame.add(label);
             //开始运转线程
             isRun = true;
+            isClear = false;
             //启动线程
             new Thread(this).start();
         }
         return this;
     }
 
-    //停止该实例线程
+    //暂停该实例线程
     public void stop() {
         //如果处于启动状态
         if (isRun == true) {
@@ -96,6 +100,16 @@ public class Cursor implements Runnable {
             //面板删除组件
             frame.remove(label);
         }
+    }
+
+    //清除该实例线程
+    public void clear() {
+        //打开清除开关
+        isClear = true;
+        //暂停
+        stop();
+        //保证线程关闭
+        run();
     }
 
     //创建一个新光标
@@ -111,11 +125,16 @@ public class Cursor implements Runnable {
     @Override
     public void run() {
         try {
+            //线程是否继续运行
             while (isRun) {
                 //光标刷新延迟
                 Thread.sleep(time);
                 //刷新
                 Refresh();
+            }
+            //是否清除
+            if (isClear) {
+                label.setVisible(false);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

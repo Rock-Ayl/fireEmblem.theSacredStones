@@ -29,6 +29,7 @@ public class KeyInput implements KeyListener {
          * ESC:27
          * z:90
          * x:88
+         * c:67
          * @param e
          */
         switch (keyCode) {
@@ -49,6 +50,9 @@ public class KeyInput implements KeyListener {
                 break;
             case 88:
                 Main.CharacterCursor.stop();
+                break;
+            case 67:
+                Main.CharacterCursor.clear();
                 break;
         }
     }
