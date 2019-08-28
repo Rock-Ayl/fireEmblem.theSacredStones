@@ -25,7 +25,10 @@ public class KeyInput implements KeyListener {
          * 下:40
          * 左:37
          * 右:39
-         *
+         * 回车:10
+         * ESC:27
+         * z:90
+         * x:88
          * @param e
          */
         switch (keyCode) {
@@ -40,6 +43,12 @@ public class KeyInput implements KeyListener {
                 break;
             case 40:
                 Main.CharacterCursor.moveDown();
+                break;
+            case 90:
+                Main.CharacterCursor.start();
+                break;
+            case 88:
+                Main.CharacterCursor.stop();
                 break;
         }
     }

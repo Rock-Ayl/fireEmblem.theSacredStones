@@ -61,7 +61,7 @@ public class Cursor implements Runnable {
         //初始化图片组
         initImgMap();
         //其他参数
-        this.isRun = true;
+        this.isRun = false;
         this.frame = frame;
         this.x = x;
         this.y = y;
@@ -75,19 +75,27 @@ public class Cursor implements Runnable {
 
     //启动该实例线程
     public Cursor start() {
-        //将组件组装至面板中
-        frame.add(this.label);
-        //启动线程
-        new Thread(this).start();
+        //如果处于停止状态
+        if (isRun == false) {
+            //将组件组装至面板中
+            frame.add(label);
+            //开始运转线程
+            isRun = true;
+            //启动线程
+            new Thread(this).start();
+        }
         return this;
     }
 
-    //启动该实例线程
+    //停止该实例线程
     public void stop() {
-        //停止线程
-        isRun = false;
-        //面板删除组件
-        frame.remove(label);
+        //如果处于启动状态
+        if (isRun == true) {
+            //停止线程
+            isRun = false;
+            //面板删除组件
+            frame.remove(label);
+        }
     }
 
     //创建一个新光标
@@ -128,32 +136,32 @@ public class Cursor implements Runnable {
 
     //上移
     public void moveUp() {
-        y = y - mov;
         if (isRun) {
+            y = y - mov;
             Refresh();
         }
     }
 
     //下移
     public void moveDown() {
-        y = y + mov;
         if (isRun) {
+            y = y + mov;
             Refresh();
         }
     }
 
     //左移
     public void moveLeft() {
-        x = x - mov;
         if (isRun) {
+            x = x - mov;
             Refresh();
         }
     }
 
     //右移
     public void moveRight() {
-        x = x + mov;
         if (isRun) {
+            x = x + mov;
             Refresh();
         }
     }
