@@ -1,6 +1,7 @@
 package start;
 
 import common.animation.Cursor;
+import common.animation.MapCharacter;
 import common.input.KeyInput;
 
 import javax.swing.*;
@@ -10,8 +11,9 @@ import javax.swing.*;
  */
 public class Main {
 
-    //人物光标
+    //人物光标demo
     public static Cursor CharacterCursor;
+
     //界面面板+大小
     public static JFrame Frame;
     public static int Width = 400;
@@ -32,7 +34,13 @@ public class Main {
         Frame.addKeyListener(new KeyInput());
 
         //增加一个光标实例并启动
-        CharacterCursor = Cursor.VOID(Frame, 100, 100,0);
+        CharacterCursor = Cursor.VOID(Frame, 100, 100, 0);
+
+        //增加一个地图人物实例并启动
+         MapCharacter.VOID(Frame, 0, 0, 1);
+
+        //增加一个地图人物实例并启动
+        MapCharacter.VOID(Frame, 50, 50, 0);
 
     }
 
