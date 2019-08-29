@@ -29,9 +29,9 @@ public class MapCharacter implements Runnable {
     //人物停留图标编号
     int stayNum;
     //人物移动时动画刷新时间 1000=1秒
-    int moveTime = 200;
+    int moveTime = 700;
     //人物停留时动画刷新时间 1000=1秒
-    int stayTime = 200;
+    int stayTime = 350;
     //人物x轴坐标
     int x;
     //人物y轴坐标
@@ -44,7 +44,7 @@ public class MapCharacter implements Runnable {
     int stayW = 64;
     //人物停留图高
     int stayH = 48;
-    //当前角色状态 0:停留  1:移动
+    //当前角色状态  0:待机-未移动-未被选中  1:待机-未移动-被选中  2:待机-已移动  3:向上移动  4:向左移动  5:向下移动  6:向右移动
     int type;
     //人物移动距离
     int mov = 10;
@@ -68,20 +68,58 @@ public class MapCharacter implements Runnable {
         //获取当前的图片
         ImageIcon img = null;
         //获取当前的图片
-        if (type == 0) {
-            img = imgStayMap.get(stayNum);
-            stayNum++;
-            if (stayNum < 1 || stayNum > 9) {
-                stayNum = 1;
-            }
-        } else if (type == 1) {
-            img = imgMoveMap.get(moveNum);
-            moveNum++;
-            if (moveNum < 1 || moveNum > 16) {
-                moveNum = 1;
-            }
-        } else {
-            System.out.println("人物状态类型错误.");
+        switch (type) {
+            case 0:
+                img = imgStayMap.get(stayNum);
+                stayNum++;
+                if (stayNum < 1 || stayNum > 3) {
+                    stayNum = 1;
+                }
+                break;
+            case 1:
+                img = imgStayMap.get(stayNum);
+                stayNum++;
+                if (stayNum < 7 || stayNum > 9) {
+                    stayNum = 7;
+                }
+                break;
+            case 2:
+                img = imgStayMap.get(stayNum);
+                stayNum++;
+                if (stayNum < 4 || stayNum > 6) {
+                    stayNum = 4;
+                }
+                break;
+            case 3:
+                img = imgStayMap.get(moveNum);
+                moveNum++;
+                if (moveNum < 13 || moveNum > 16) {
+                    moveNum = 13;
+                }
+                break;
+            case 4:
+                img = imgMoveMap.get(moveNum);
+                moveNum++;
+                if (moveNum < 5 || moveNum > 8) {
+                    moveNum = 5;
+                }
+                break;
+            case 5:
+                img = imgMoveMap.get(moveNum);
+                moveNum++;
+                if (moveNum < 1 || moveNum > 4) {
+                    moveNum = 1;
+                }
+                break;
+            case 6:
+                img = imgMoveMap.get(moveNum);
+                moveNum++;
+                if (moveNum < 9 || moveNum > 12) {
+                    moveNum = 9;
+                }
+                break;
+            default:
+                System.out.println("人物状态类型错误.");
         }
         return img;
     }
@@ -145,13 +183,22 @@ public class MapCharacter implements Runnable {
     private JLabel VOIDMapCharacter() {
         //组件
         JLabel mapChar = new JLabel(getImg());
-        //设置组件 x y 轴  宽高
-        if (type == 0) {
-            mapChar.setBounds(x, y, stayW, stayH);
-        } else if (type == 1) {
-            mapChar.setBounds(x, y, moveW, moveH);
-        } else {
-            System.out.println("人物状态类型错误.");
+        //根据type设置组件 x y 轴  宽高
+        switch (type) {
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                mapChar.setBounds(x, y, moveW, moveH);
+                break;
+            case 0:
+            case 1:
+            case 2:
+                mapChar.setBounds(x, y, stayW, stayH);
+                break;
+            default:
+                System.out.println("人物状态类型错误.");
+                break;
         }
         //返回组件
         return mapChar;
@@ -163,12 +210,21 @@ public class MapCharacter implements Runnable {
             //线程是否继续运行
             while (isRun) {
                 //人物动画刷新延迟
-                if (type == 0) {
-                    Thread.sleep(stayTime);
-                } else if (type == 1) {
-                    Thread.sleep(moveTime);
-                } else {
-                    System.out.println("人物状态类型错误.");
+                switch (type) {
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                        Thread.sleep(moveTime);
+                        break;
+                    case 0:
+                    case 1:
+                    case 2:
+                        Thread.sleep(stayTime);
+                        break;
+                    default:
+                        System.out.println("人物状态类型错误.");
+                        break;
                 }
                 //刷新
                 Refresh();
@@ -194,7 +250,7 @@ public class MapCharacter implements Runnable {
         frame.repaint();
     }
 
-    //切换人物停留/移动状态
+    //切换人物各种状态
     public void switchType(int type) {
         this.type = type;
     }
@@ -210,11 +266,9 @@ public class MapCharacter implements Runnable {
         if (isRun) {
             y = y - mov;
             //切换到移动状态
-            switchType(1);
+            switchType(3);
             //刷新
             Refresh();
-            //切换到停留状态
-            switchType(0);
         }
     }
 
@@ -223,11 +277,9 @@ public class MapCharacter implements Runnable {
         if (isRun) {
             y = y + mov;
             //切换到移动状态
-            switchType(1);
+            switchType(5);
             //刷新
             Refresh();
-            //切换到停留状态
-            switchType(0);
         }
     }
 
@@ -236,11 +288,9 @@ public class MapCharacter implements Runnable {
         if (isRun) {
             x = x - mov;
             //切换到移动状态
-            switchType(1);
+            switchType(4);
             //刷新
             Refresh();
-            //切换到停留状态
-            switchType(0);
         }
     }
 
@@ -249,11 +299,9 @@ public class MapCharacter implements Runnable {
         if (isRun) {
             x = x + mov;
             //切换到移动状态
-            switchType(1);
+            switchType(6);
             //刷新
             Refresh();
-            //切换到停留状态
-            switchType(0);
         }
     }
 }
