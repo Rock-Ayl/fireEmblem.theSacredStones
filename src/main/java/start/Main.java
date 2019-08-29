@@ -14,6 +14,9 @@ public class Main {
     //人物光标demo
     public static Cursor CharacterCursor;
 
+    //人物地图demo
+    public static MapCharacter CharacterMapCharacter;
+
     //界面面板+大小
     public static JFrame Frame;
     public static int Width = 400;
@@ -37,10 +40,8 @@ public class Main {
         CharacterCursor = Cursor.VOID(Frame, 100, 100, 0);
 
         //增加一个地图人物实例并启动
-         MapCharacter.VOID(Frame, 0, 0, 1);
+        CharacterMapCharacter =  MapCharacter.VOID(Frame, 0, 0, 1);
 
-        //增加一个地图人物实例并启动
-        MapCharacter.VOID(Frame, 50, 50, 0);
 
     }
 

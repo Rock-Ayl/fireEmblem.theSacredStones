@@ -46,6 +46,8 @@ public class MapCharacter implements Runnable {
     int stayH = 48;
     //当前角色状态 0:停留  1:移动
     int type;
+    //人物移动距离
+    int mov = 10;
 
     //初始化停留和移动的图片组
     private void initImgMap() {
@@ -192,14 +194,66 @@ public class MapCharacter implements Runnable {
         frame.repaint();
     }
 
-    //切换光标状态
+    //切换人物停留/移动状态
     public void switchType(int type) {
         this.type = type;
     }
 
-    //切换光标坐标
+    //切换人物坐标
     public void switchXY(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    //上移
+    public void moveUp() {
+        if (isRun) {
+            y = y - mov;
+            //切换到移动状态
+            switchType(1);
+            //刷新
+            Refresh();
+            //切换到停留状态
+            switchType(0);
+        }
+    }
+
+    //下移
+    public void moveDown() {
+        if (isRun) {
+            y = y + mov;
+            //切换到移动状态
+            switchType(1);
+            //刷新
+            Refresh();
+            //切换到停留状态
+            switchType(0);
+        }
+    }
+
+    //左移
+    public void moveLeft() {
+        if (isRun) {
+            x = x - mov;
+            //切换到移动状态
+            switchType(1);
+            //刷新
+            Refresh();
+            //切换到停留状态
+            switchType(0);
+        }
+    }
+
+    //右移
+    public void moveRight() {
+        if (isRun) {
+            x = x + mov;
+            //切换到移动状态
+            switchType(1);
+            //刷新
+            Refresh();
+            //切换到停留状态
+            switchType(0);
+        }
     }
 }

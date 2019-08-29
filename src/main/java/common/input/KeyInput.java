@@ -30,18 +30,22 @@ public class KeyInput implements KeyListener {
             //左
             case 37:
                 Main.CharacterCursor.moveLeft();
+                Main.CharacterMapCharacter.moveLeft();
                 break;
             //上
             case 38:
                 Main.CharacterCursor.moveUp();
+                Main.CharacterMapCharacter.moveUp();
                 break;
             //右
             case 39:
                 Main.CharacterCursor.moveRight();
+                Main.CharacterMapCharacter.moveRight();
                 break;
             //下
             case 40:
                 Main.CharacterCursor.moveDown();
+                Main.CharacterMapCharacter.moveDown();
                 break;
             //z
             case 90:
