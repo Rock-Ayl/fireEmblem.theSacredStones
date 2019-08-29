@@ -62,14 +62,17 @@ public class KeyInput implements KeyListener {
             //a
             case 65:
                 Main.CharacterCursor.switchType(0);
+                Main.CharacterMapCharacter.switchType(0);
                 break;
             //s
             case 83:
                 Main.CharacterCursor.switchType(1);
+                Main.CharacterMapCharacter.switchType(1);
                 break;
             //d
             case 68:
                 Main.CharacterCursor.switchType(2);
+                Main.CharacterMapCharacter.switchType(2);
                 break;
             //q
             case 81:

@@ -29,9 +29,9 @@ public class MapCharacter implements Runnable {
     //人物停留图标编号
     int stayNum;
     //人物移动时动画刷新时间 1000=1秒
-    int moveTime = 700;
+    int moveTime = 200;
     //人物停留时动画刷新时间 1000=1秒
-    int stayTime = 350;
+    int stayTime = 250;
     //人物x轴坐标
     int x;
     //人物y轴坐标
@@ -91,7 +91,7 @@ public class MapCharacter implements Runnable {
                 }
                 break;
             case 3:
-                img = imgStayMap.get(moveNum);
+                img = imgMoveMap.get(moveNum);
                 moveNum++;
                 if (moveNum < 13 || moveNum > 16) {
                     moveNum = 13;
