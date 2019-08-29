@@ -22,6 +22,11 @@ public class Const {
     //todo 光标用例原图
     public final static String CursorPath = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/cursor/Cursor.png");
 
+    //todo 圣骑士-男-地图-停留
+    public final static String Map_Paladin_M_Stay = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/paladin/Map_Paladin_M_Stay.png");
+    //todo 圣骑士-男-地图-移动
+    public final static String Map_Paladin_M_Move = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/paladin/Map_Paladin_M_Move.png");
+
     /**
      * 获取项目路径
      *
