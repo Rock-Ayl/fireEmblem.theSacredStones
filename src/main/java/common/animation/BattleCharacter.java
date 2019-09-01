@@ -10,7 +10,7 @@ import java.util.HashMap;
  * created by Rock-Ayl on 2019-9-1
  * 一个人物战斗时候的demo
  */
-public class BattleCharacter implements Runnable{
+public class BattleCharacter implements Runnable {
 
     //线程是否运行
     boolean isRun;
@@ -29,7 +29,7 @@ public class BattleCharacter implements Runnable{
     //人物闪避图片编号
     int dodgeNum;
     //攻击动画刷新时间 1000=1秒
-    int battleTime = 200;
+    int battleTime = 75;
     //闪避动画刷新时间 1000=1秒
     int dodgeTime = 200;
     //人物x轴坐标
@@ -50,12 +50,12 @@ public class BattleCharacter implements Runnable{
     //初始化图片组
     private void initImgMap() {
         battleImgMap = new HashMap<>();
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 47; i++) {
             //组装
             battleImgMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.Battle_Paladin_F_Lance, i)));
         }
         dodgeImgMap = new HashMap<>();
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 6; i++) {
             //组装
             dodgeImgMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.Battle_Paladin_F_Dodge, i)));
         }
@@ -65,6 +65,10 @@ public class BattleCharacter implements Runnable{
     private ImageIcon getImg() {
         //根据光标type获取图片
         ImageIcon img = battleImgMap.get(battleNum);
+        if (img == null) {
+            System.out.println("找不到图片");
+        }
+        battleNum++;
         if (battleNum < 1 || battleNum > 47) {
             battleNum = 1;
         }
