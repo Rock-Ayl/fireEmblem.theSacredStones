@@ -23,7 +23,7 @@ public class Cursor implements Runnable {
     //光标对象
     JLabel label;
     //光标图标编号
-    int num;
+    int num=1;
     //光标刷新时间 1000=1秒
     int time = 200;
     //光标x轴坐标

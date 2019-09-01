@@ -25,7 +25,7 @@ public class BattleCharacter implements Runnable {
     //人物对象
     JLabel label;
     //人物攻击图片编号
-    int battleNum;
+    int battleNum = 1;
     //人物闪避图片编号
     int dodgeNum;
     //攻击动画刷新时间 1000=1秒
@@ -66,7 +66,7 @@ public class BattleCharacter implements Runnable {
         //根据光标type获取图片
         ImageIcon img = battleImgMap.get(battleNum);
         if (img == null) {
-            System.out.println("找不到图片");
+            System.out.println("找不到图片" + battleNum);
         }
         battleNum++;
         if (battleNum < 1 || battleNum > 47) {

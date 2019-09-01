@@ -25,9 +25,9 @@ public class MapCharacter implements Runnable {
     //人物对象
     JLabel label;
     //人物移动图标编号
-    int moveNum;
+    int moveNum = 1;
     //人物停留图标编号
-    int stayNum;
+    int stayNum = 1;
     //人物移动时动画刷新时间 1000=1秒
     int moveTime = 200;
     //人物停留时动画刷新时间 1000=1秒
