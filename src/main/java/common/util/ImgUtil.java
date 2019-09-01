@@ -60,7 +60,7 @@ public class ImgUtil {
     }
 
     public static void main(String[] args) {
-        cutImag(48, 40, Const.Map_Paladin_M_Move);
+        cutImag(192, 192, Const.Battle_Paladin_F_Lance);
     }
 
 }
