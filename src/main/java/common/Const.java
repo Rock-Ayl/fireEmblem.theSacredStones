@@ -25,7 +25,7 @@ public class Const {
     //todo 圣骑士-男-地图-停留
     public final static String Map_Paladin_M_Stay = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/paladin/map_paladin_m_stay/Map_Paladin_M_Stay.png");
     //todo 圣骑士-男-地图-移动
-    public final static String Map_Paladin_M_Move = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/paladin/map_paladin_m_stay/Map_Paladin_M_Move.png");
+    public final static String Map_Paladin_M_Move = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/paladin/map_paladin_m_move/Map_Paladin_M_Move.png");
 
     //todo 圣骑士-女-战斗-矛-攻击
     public final static String Battle_Paladin_F_Lance = FilenameUtils.separatorsToSystem(ResourcesPath + "characters/paladin/battle_paladin_f_lance/Battle_Paladin_F_Lance.png");
