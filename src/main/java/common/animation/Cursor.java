@@ -13,38 +13,38 @@ import java.util.HashMap;
 public class Cursor implements Runnable {
 
     //线程是否运行
-    boolean isRun;
+    boolean IsRun;
     //是否清除线程
-    boolean isClear;
+    boolean IsClear;
     //光标图片组
-    HashMap<Integer, ImageIcon> imgMap;
+    HashMap<Integer, ImageIcon> ImgMap;
     //光标放置的面板
-    JFrame frame;
+    JFrame Frame;
     //光标对象
-    JLabel label;
+    JLabel Label;
     //光标图标编号
-    int num=1;
+    int Num = 1;
     //光标刷新时间 1000=1秒
-    int time = 200;
+    int Time = 200;
     //光标x轴坐标
-    int x;
+    int X;
     //光标y轴坐标
-    int y;
+    int Y;
     //光标图宽
-    int w = 32;
+    int W = 32;
     //光标图高
-    int h = 32;
+    int H = 32;
     //光标移动距离
-    int mov = 10;
+    int Mov = 10;
     //光标状态  0:无选中   1:敌方   2:我方
-    int type;
+    int Type;
 
     //初始化图片组
     private void initImgMap() {
-        imgMap = new HashMap<>();
+        ImgMap = new HashMap<>();
         for (int i = 1; i <= 9; i++) {
             //组装
-            imgMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.CursorPath, i)));
+            ImgMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.CursorPath, i)));
         }
     }
 
@@ -52,22 +52,22 @@ public class Cursor implements Runnable {
     private ImageIcon getImg() {
         //根据光标type获取图片
         ImageIcon img;
-        if (type == 0) {
-            num++;
-            if (num >= 5 || num < 1) {
-                num = 1;
+        if (Type == 0) {
+            Num++;
+            if (Num >= 5 || Num < 1) {
+                Num = 1;
             }
-        } else if (type == 1) {
-            num++;
-            if (num >= 9 || num < 5) {
-                num = 5;
+        } else if (Type == 1) {
+            Num++;
+            if (Num >= 9 || Num < 5) {
+                Num = 5;
             }
-        } else if (type == 2) {
-            num = 9;
+        } else if (Type == 2) {
+            Num = 9;
         } else {
             System.out.println("光标状态出错.");
         }
-        img = imgMap.get(num);
+        img = ImgMap.get(Num);
         return img;
     }
 
@@ -76,13 +76,13 @@ public class Cursor implements Runnable {
         //初始化图片组
         initImgMap();
         //其他参数
-        this.isRun = false;
-        this.isClear = false;
-        this.frame = frame;
-        this.x = x;
-        this.y = y;
-        this.type = type;
-        this.label = VOIDCursor();
+        this.IsRun = false;
+        this.IsClear = false;
+        this.Frame = frame;
+        this.X = x;
+        this.Y = y;
+        this.Type = type;
+        this.Label = VOIDCursor();
     }
 
     //初始化光标线程对象
@@ -93,12 +93,12 @@ public class Cursor implements Runnable {
     //启动该实例线程
     public Cursor start() {
         //如果处于停止状态
-        if (isRun == false) {
+        if (IsRun == false) {
             //将组件组装至面板中
-            frame.add(label);
+            Frame.add(Label);
             //开始运转线程
-            isRun = true;
-            isClear = false;
+            IsRun = true;
+            IsClear = false;
             //启动线程
             new Thread(this).start();
         }
@@ -108,18 +108,18 @@ public class Cursor implements Runnable {
     //暂停该实例线程
     public void stop() {
         //如果处于启动状态
-        if (isRun == true) {
+        if (IsRun == true) {
             //停止线程
-            isRun = false;
+            IsRun = false;
             //面板删除组件
-            frame.remove(label);
+            Frame.remove(Label);
         }
     }
 
     //清除该实例线程
     public void clear() {
         //打开清除开关
-        isClear = true;
+        IsClear = true;
         //暂停
         stop();
         //保证线程关闭
@@ -130,8 +130,8 @@ public class Cursor implements Runnable {
     private JLabel VOIDCursor() {
         //组件
         JLabel cursor = new JLabel(getImg());
-        //设置组件 x Y 轴  宽高
-        cursor.setBounds(x, y, w, h);
+        //设置组件 X Y 轴  宽高
+        cursor.setBounds(X, Y, W, H);
         //返回光标
         return cursor;
     }
@@ -140,15 +140,15 @@ public class Cursor implements Runnable {
     public void run() {
         try {
             //线程是否继续运行
-            while (isRun) {
+            while (IsRun) {
                 //光标刷新延迟
-                Thread.sleep(time);
+                Thread.sleep(Time);
                 //刷新
                 Refresh();
             }
             //是否清除
-            if (isClear) {
-                label.setVisible(false);
+            if (IsClear) {
+                Label.setVisible(false);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -158,56 +158,56 @@ public class Cursor implements Runnable {
     //刷新状态,加锁,防止多帧
     public synchronized void Refresh() {
         //删除旧光标
-        frame.remove(label);
+        Frame.remove(Label);
         //新光标
-        label = VOIDCursor();
+        Label = VOIDCursor();
         //放入面板
-        frame.add(label);
+        Frame.add(Label);
         //刷新面板
-        frame.repaint();
+        Frame.repaint();
     }
 
     //上移
     public void moveUp() {
-        if (isRun) {
-            y = y - mov;
+        if (IsRun) {
+            Y = Y - Mov;
             Refresh();
         }
     }
 
     //下移
     public void moveDown() {
-        if (isRun) {
-            y = y + mov;
+        if (IsRun) {
+            Y = Y + Mov;
             Refresh();
         }
     }
 
     //左移
     public void moveLeft() {
-        if (isRun) {
-            x = x - mov;
+        if (IsRun) {
+            X = X - Mov;
             Refresh();
         }
     }
 
     //右移
     public void moveRight() {
-        if (isRun) {
-            x = x + mov;
+        if (IsRun) {
+            X = X + Mov;
             Refresh();
         }
     }
 
     //切换光标状态
     public void switchType(int type) {
-        this.type = type;
+        this.Type = type;
     }
 
     //切换光标坐标
     public void switchXY(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.X = x;
+        this.Y = y;
     }
 
 }

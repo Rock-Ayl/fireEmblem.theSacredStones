@@ -13,53 +13,53 @@ import java.util.HashMap;
 public class MapCharacter implements Runnable {
 
     //线程是否运行
-    boolean isRun;
+    boolean IsRun;
     //是否清除线程
-    boolean isClear;
+    boolean IsClear;
     //人物移动图片组
-    HashMap<Integer, ImageIcon> imgMoveMap;
+    HashMap<Integer, ImageIcon> ImgMoveMap;
     //人物停留图片组
-    HashMap<Integer, ImageIcon> imgStayMap;
+    HashMap<Integer, ImageIcon> ImgStayMap;
     //人物放置的面板
-    JFrame frame;
+    JFrame Frame;
     //人物对象
-    JLabel label;
+    JLabel Label;
     //人物移动图标编号
-    int moveNum = 1;
+    int MoveNum = 1;
     //人物停留图标编号
-    int stayNum = 1;
+    int StayNum = 1;
     //人物移动时动画刷新时间 1000=1秒
-    int moveTime = 200;
+    int MoveTime = 200;
     //人物停留时动画刷新时间 1000=1秒
-    int stayTime = 250;
+    int StayTime = 250;
     //人物x轴坐标
-    int x;
+    int X;
     //人物y轴坐标
-    int y;
+    int Y;
     //人物移动图宽
-    int moveW = 48;
+    int MoveW = 48;
     //人物移动图高
-    int moveH = 40;
+    int MoveH = 40;
     //人物停留图宽
-    int stayW = 64;
+    int StayW = 64;
     //人物停留图高
-    int stayH = 48;
+    int StayH = 48;
     //当前角色状态  0:待机-未移动-未被选中  1:待机-未移动-被选中  2:待机-已移动  3:向上移动  4:向左移动  5:向下移动  6:向右移动
-    int type;
+    int Type;
     //人物移动距离
-    int mov = 10;
+    int Mov = 10;
 
     //初始化停留和移动的图片组
     private void initImgMap() {
-        imgMoveMap = new HashMap<>();
+        ImgMoveMap = new HashMap<>();
         for (int i = 1; i <= 16; i++) {
             //组装移动的图片
-            imgMoveMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.Map_Paladin_M_Move, i)));
+            ImgMoveMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.Map_Paladin_M_Move, i)));
         }
-        imgStayMap = new HashMap<>();
+        ImgStayMap = new HashMap<>();
         for (int i = 1; i <= 9; i++) {
             //组装停留的图片
-            imgStayMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.Map_Paladin_M_Stay, i)));
+            ImgStayMap.put(i, new ImageIcon(FileUtil.setNumForFile(Const.Map_Paladin_M_Stay, i)));
         }
     }
 
@@ -68,54 +68,54 @@ public class MapCharacter implements Runnable {
         //获取当前的图片
         ImageIcon img = null;
         //获取当前的图片
-        switch (type) {
+        switch (Type) {
             case 0:
-                img = imgStayMap.get(stayNum);
-                stayNum++;
-                if (stayNum < 1 || stayNum > 3) {
-                    stayNum = 1;
+                img = ImgStayMap.get(StayNum);
+                StayNum++;
+                if (StayNum < 1 || StayNum > 3) {
+                    StayNum = 1;
                 }
                 break;
             case 1:
-                img = imgStayMap.get(stayNum);
-                stayNum++;
-                if (stayNum < 7 || stayNum > 9) {
-                    stayNum = 7;
+                img = ImgStayMap.get(StayNum);
+                StayNum++;
+                if (StayNum < 7 || StayNum > 9) {
+                    StayNum = 7;
                 }
                 break;
             case 2:
-                img = imgStayMap.get(stayNum);
-                stayNum++;
-                if (stayNum < 4 || stayNum > 6) {
-                    stayNum = 4;
+                img = ImgStayMap.get(StayNum);
+                StayNum++;
+                if (StayNum < 4 || StayNum > 6) {
+                    StayNum = 4;
                 }
                 break;
             case 3:
-                img = imgMoveMap.get(moveNum);
-                moveNum++;
-                if (moveNum < 13 || moveNum > 16) {
-                    moveNum = 13;
+                img = ImgMoveMap.get(MoveNum);
+                MoveNum++;
+                if (MoveNum < 13 || MoveNum > 16) {
+                    MoveNum = 13;
                 }
                 break;
             case 4:
-                img = imgMoveMap.get(moveNum);
-                moveNum++;
-                if (moveNum < 5 || moveNum > 8) {
-                    moveNum = 5;
+                img = ImgMoveMap.get(MoveNum);
+                MoveNum++;
+                if (MoveNum < 5 || MoveNum > 8) {
+                    MoveNum = 5;
                 }
                 break;
             case 5:
-                img = imgMoveMap.get(moveNum);
-                moveNum++;
-                if (moveNum < 1 || moveNum > 4) {
-                    moveNum = 1;
+                img = ImgMoveMap.get(MoveNum);
+                MoveNum++;
+                if (MoveNum < 1 || MoveNum > 4) {
+                    MoveNum = 1;
                 }
                 break;
             case 6:
-                img = imgMoveMap.get(moveNum);
-                moveNum++;
-                if (moveNum < 9 || moveNum > 12) {
-                    moveNum = 9;
+                img = ImgMoveMap.get(MoveNum);
+                MoveNum++;
+                if (MoveNum < 9 || MoveNum > 12) {
+                    MoveNum = 9;
                 }
                 break;
             default:
@@ -129,13 +129,13 @@ public class MapCharacter implements Runnable {
         //初始化图片组
         initImgMap();
         //其他参数
-        this.isRun = false;
-        this.isClear = false;
-        this.frame = frame;
-        this.x = x;
-        this.y = y;
-        this.type = type;
-        this.label = VOIDMapCharacter();
+        this.IsRun = false;
+        this.IsClear = false;
+        this.Frame = frame;
+        this.X = x;
+        this.Y = y;
+        this.Type = type;
+        this.Label = VOIDMapCharacter();
     }
 
     //初始化地图人物线程对象
@@ -146,12 +146,12 @@ public class MapCharacter implements Runnable {
     //启动该实例线程
     public MapCharacter start() {
         //如果处于停止状态
-        if (isRun == false) {
+        if (IsRun == false) {
             //将组件组装至面板中
-            frame.add(label);
+            Frame.add(Label);
             //开始运转线程
-            isRun = true;
-            isClear = false;
+            IsRun = true;
+            IsClear = false;
             //启动线程
             new Thread(this).start();
         }
@@ -161,18 +161,18 @@ public class MapCharacter implements Runnable {
     //暂停该实例线程
     public void stop() {
         //如果处于启动状态
-        if (isRun == true) {
+        if (IsRun == true) {
             //停止线程
-            isRun = false;
+            IsRun = false;
             //面板删除组件
-            frame.remove(label);
+            Frame.remove(Label);
         }
     }
 
     //清除该实例线程
     public void clear() {
         //打开清除开关
-        isClear = true;
+        IsClear = true;
         //暂停
         stop();
         //保证线程关闭
@@ -183,18 +183,18 @@ public class MapCharacter implements Runnable {
     private JLabel VOIDMapCharacter() {
         //组件
         JLabel mapChar = new JLabel(getImg());
-        //根据type设置组件 x Y 轴  宽高
-        switch (type) {
+        //根据type设置组件 X Y 轴  宽高
+        switch (Type) {
             case 3:
             case 4:
             case 5:
             case 6:
-                mapChar.setBounds(x, y, moveW, moveH);
+                mapChar.setBounds(X, Y, MoveW, MoveH);
                 break;
             case 0:
             case 1:
             case 2:
-                mapChar.setBounds(x, y, stayW, stayH);
+                mapChar.setBounds(X, Y, StayW, StayH);
                 break;
             default:
                 System.out.println("人物状态类型错误.");
@@ -208,19 +208,19 @@ public class MapCharacter implements Runnable {
     public void run() {
         try {
             //线程是否继续运行
-            while (isRun) {
+            while (IsRun) {
                 //人物动画刷新延迟
-                switch (type) {
+                switch (Type) {
                     case 3:
                     case 4:
                     case 5:
                     case 6:
-                        Thread.sleep(moveTime);
+                        Thread.sleep(MoveTime);
                         break;
                     case 0:
                     case 1:
                     case 2:
-                        Thread.sleep(stayTime);
+                        Thread.sleep(StayTime);
                         break;
                     default:
                         System.out.println("人物状态类型错误.");
@@ -230,8 +230,8 @@ public class MapCharacter implements Runnable {
                 Refresh();
             }
             //是否清除
-            if (isClear) {
-                label.setVisible(false);
+            if (IsClear) {
+                Label.setVisible(false);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -241,30 +241,30 @@ public class MapCharacter implements Runnable {
     //刷新状态,加锁,防止多帧
     public synchronized void Refresh() {
         //删除旧组件
-        frame.remove(label);
+        Frame.remove(Label);
         //新组件
-        label = VOIDMapCharacter();
+        Label = VOIDMapCharacter();
         //放入面板
-        frame.add(label);
+        Frame.add(Label);
         //刷新面板
-        frame.repaint();
+        Frame.repaint();
     }
 
     //切换人物各种状态
     public void switchType(int type) {
-        this.type = type;
+        this.Type = type;
     }
 
     //切换人物坐标
     public void switchXY(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.X = x;
+        this.Y = y;
     }
 
     //上移
     public void moveUp() {
-        if (isRun) {
-            y = y - mov;
+        if (IsRun) {
+            Y = Y - Mov;
             //切换到移动状态
             switchType(3);
             //刷新
@@ -274,8 +274,8 @@ public class MapCharacter implements Runnable {
 
     //下移
     public void moveDown() {
-        if (isRun) {
-            y = y + mov;
+        if (IsRun) {
+            Y = Y + Mov;
             //切换到移动状态
             switchType(5);
             //刷新
@@ -285,8 +285,8 @@ public class MapCharacter implements Runnable {
 
     //左移
     public void moveLeft() {
-        if (isRun) {
-            x = x - mov;
+        if (IsRun) {
+            X = X - Mov;
             //切换到移动状态
             switchType(4);
             //刷新
@@ -296,8 +296,8 @@ public class MapCharacter implements Runnable {
 
     //右移
     public void moveRight() {
-        if (isRun) {
-            x = x + mov;
+        if (IsRun) {
+            X = X + Mov;
             //切换到移动状态
             switchType(6);
             //刷新

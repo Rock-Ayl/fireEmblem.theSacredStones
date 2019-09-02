@@ -140,7 +140,7 @@ public class BattleCharacter implements Runnable {
     private JLabel VOIDCharacter() {
         //组件
         JLabel character = new JLabel(getImg());
-        //设置组件 x Y 轴  宽高
+        //设置组件 X Y 轴  宽高
         character.setBounds(x, Y, W, H);
         //返回人物组件
         return character;
