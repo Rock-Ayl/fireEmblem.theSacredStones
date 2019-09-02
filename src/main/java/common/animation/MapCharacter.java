@@ -183,7 +183,7 @@ public class MapCharacter implements Runnable {
     private JLabel VOIDMapCharacter() {
         //组件
         JLabel mapChar = new JLabel(getImg());
-        //根据type设置组件 x y 轴  宽高
+        //根据type设置组件 x Y 轴  宽高
         switch (type) {
             case 3:
             case 4:

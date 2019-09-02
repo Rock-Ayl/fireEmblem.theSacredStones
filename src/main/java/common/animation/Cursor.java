@@ -130,7 +130,7 @@ public class Cursor implements Runnable {
     private JLabel VOIDCursor() {
         //组件
         JLabel cursor = new JLabel(getImg());
-        //设置组件 x y 轴  宽高
+        //设置组件 x Y 轴  宽高
         cursor.setBounds(x, y, w, h);
         //返回光标
         return cursor;

@@ -47,7 +47,7 @@ public class Main {
         CharacterMapCharacter = MapCharacter.VOID(Frame, 0, 0, 1);
 
         //增加一个人物战斗图实例并启动
-        CharacterBattleCharacter = BattleCharacter.VOID(Frame, 0, 0, 1);
+        CharacterBattleCharacter = BattleCharacter.VOID(Frame, 0, 0);
 
 
     }
