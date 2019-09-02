@@ -156,11 +156,7 @@ public class BattleCharacter implements Runnable {
                 //刷新
                 Refresh();
                 //当前人物帧刷新延迟
-                Long thisNum = BattleTimeMap.get(num);
-                if (thisNum == null) {
-                    System.out.println(num - 1);
-                }
-                Thread.sleep(thisNum);
+                Thread.sleep(BattleTimeMap.get(num));
             }
             //是否清除
             if (IsClear) {
