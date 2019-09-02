@@ -2,6 +2,7 @@ package common.animation;
 
 import common.Const;
 import common.util.FileUtil;
+import common.util.PropertyFileUtil;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -46,6 +47,22 @@ public class BattleCharacter implements Runnable {
     int WeaponType;
     //人物动作状态   攻击,防御
     int actType;
+    //获取战斗帧组
+    static HashMap<Integer, Long> battleTimeMap = new HashMap<>();
+
+    //初始化动画的每一帧时间
+    private static void initBattleTime() {
+        //初始化第一帧编号(图片)
+        int thisNum = 1;
+        //获取帧组
+        String[] battleTimes = PropertyFileUtil.BattleProperties.getProperty("Battle_Paladin_F_Lance_Time").split(",");
+        //匹配编号组装至map
+        for (String battleTime : battleTimes) {
+            battleTimeMap.put(thisNum, Long.parseLong(battleTime));
+            //编号++
+            thisNum++;
+        }
+    }
 
     //初始化图片组
     private void initImgMap() {
@@ -86,6 +103,7 @@ public class BattleCharacter implements Runnable {
         this.x = x;
         this.y = y;
         this.label = VOIDCursor();
+        initBattleTime();
     }
 
     //初始化光标线程对象
@@ -144,10 +162,12 @@ public class BattleCharacter implements Runnable {
         try {
             //线程是否继续运行
             while (isRun) {
-                //光标刷新延迟
-                Thread.sleep(battleTime);
+                //记录当前编号(刷新会改变它)
+                int num = battleNum;
                 //刷新
                 Refresh();
+                //当前人物帧刷新延迟
+                Thread.sleep(battleTimeMap.get(num));
             }
             //是否清除
             if (isClear) {
