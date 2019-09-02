@@ -29,10 +29,6 @@ public class BattleCharacter implements Runnable {
     int battleNum = 1;
     //人物闪避图片编号
     int dodgeNum;
-    //攻击动画刷新时间 1000=1秒
-    int battleTime = 75;
-    //闪避动画刷新时间 1000=1秒
-    int dodgeTime = 200;
     //人物x轴坐标
     int x;
     //人物y轴坐标
