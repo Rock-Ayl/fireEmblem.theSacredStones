@@ -1,5 +1,6 @@
 package start;
 
+import common.Const;
 import common.animation.BattleCharacter;
 import common.animation.Cursor;
 import common.animation.MapCharacter;
@@ -47,7 +48,7 @@ public class Main {
         CharacterMapCharacter = MapCharacter.VOID(Frame, 0, 0, 1);
 
         //增加一个人物战斗图实例并启动
-        CharacterBattleCharacter = BattleCharacter.VOID(Frame, 0, 0);
+        CharacterBattleCharacter = BattleCharacter.VOID(Frame, 0, 0, "Battle_Paladin_F_Lance_Act_Normal_Time", Const.Battle_Paladin_F_Lance_Act_Normal);
 
 
     }

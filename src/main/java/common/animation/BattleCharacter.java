@@ -1,6 +1,5 @@
 package common.animation;
 
-import common.Const;
 import common.util.FileUtil;
 import common.util.PropertyFileUtil;
 
@@ -38,9 +37,9 @@ public class BattleCharacter implements Runnable {
     //人物图片总高
     int H = 192;
     //设定动画帧配置文件key
-    String BattleTimeArrKey = "Battle_Paladin_F_Lance_Act_Normal_Time";
+    String BattleTimeArrKey;
     //设定动画帧对应图片路径
-    String BattleImgPath = Const.Battle_Paladin_F_Lance_Act_Normal;
+    String BattleImgPath;
 
     //初始化动画的每一帧时间及图片组
     private void initBattleTime() {
@@ -79,7 +78,11 @@ public class BattleCharacter implements Runnable {
     }
 
     //初始化人物线程对象
-    public BattleCharacter(JFrame frame, int x, int y) {
+    public BattleCharacter(JFrame frame, int x, int y, String battleTimeArrKey, String battleImgPath) {
+        //设定动画帧配置文件key
+        BattleTimeArrKey = battleTimeArrKey;
+        //设定动画帧对应图片路径
+        BattleImgPath = battleImgPath;
         //初始化图片帧及初始化图片组
         initBattleTime();
         //其他参数
@@ -92,8 +95,8 @@ public class BattleCharacter implements Runnable {
     }
 
     //初始化人物线程对象
-    public static BattleCharacter VOID(JFrame frame, int x, int y) {
-        return new BattleCharacter(frame, x, y).start();
+    public static BattleCharacter VOID(JFrame frame, int x, int y, String battleTimeArrKey, String battleImgPath) {
+        return new BattleCharacter(frame, x, y, battleTimeArrKey, battleImgPath).start();
     }
 
     //启动该实例线程
