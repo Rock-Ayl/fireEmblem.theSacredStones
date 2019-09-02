@@ -9,6 +9,7 @@ import java.util.HashMap;
 /**
  * created by Rock-Ayl on 2019-9-1
  * 一个人物战斗时候的实例demo
+ * 动画帧存放在了battle.properties这个配置文件中
  */
 public class BattleCharacter implements Runnable {
 
@@ -45,7 +46,7 @@ public class BattleCharacter implements Runnable {
     private void initBattleTime() {
         //初始化第一帧编号(图片)
         int thisNum = BattleNum;
-        //获取帧组
+        //进入配置获取帧组
         String[] battleTimes = PropertyFileUtil.BattleProperties.getProperty(BattleTimeArrKey).split(",");
         //匹配编号组装至map
         for (String battleTime : battleTimes) {
