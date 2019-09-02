@@ -138,7 +138,7 @@ public class MapCharacter implements Runnable {
         this.label = VOIDMapCharacter();
     }
 
-    //初始化光标线程对象
+    //初始化地图人物线程对象
     public static MapCharacter VOID(JFrame frame, int x, int y, int type) {
         return new MapCharacter(frame, x, y, type).start();
     }
@@ -240,9 +240,9 @@ public class MapCharacter implements Runnable {
 
     //刷新状态,加锁,防止多帧
     public synchronized void Refresh() {
-        //删除旧光标
+        //删除旧组件
         frame.remove(label);
-        //新光标
+        //新组件
         label = VOIDMapCharacter();
         //放入面板
         frame.add(label);

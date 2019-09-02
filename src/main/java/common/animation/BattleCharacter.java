@@ -38,9 +38,9 @@ public class BattleCharacter implements Runnable {
     //人物图片总高
     int H = 192;
     //设定动画帧配置文件key
-    String BattleTimeArrKey = "Battle_Paladin_F_Nothing_Dodge_Time";
+    String BattleTimeArrKey = "Battle_Paladin_F_Lance_Act_Normal_Time";
     //设定动画帧对应图片路径
-    String BattleImgPath = Const.Battle_Paladin_F_Nothing_Dodge;
+    String BattleImgPath = Const.Battle_Paladin_F_Lance_Act_Normal;
 
     //初始化动画的每一帧时间及图片组
     private void initBattleTime() {
@@ -55,7 +55,7 @@ public class BattleCharacter implements Runnable {
             thisNum++;
         }
         //初始化最后一张图片
-        MaxBattleNum = thisNum;
+        MaxBattleNum = thisNum - 1;
         //初始化图片组
         BattleImgMap = new HashMap<>();
         for (int i = 1; i <= MaxBattleNum; i++) {
@@ -78,7 +78,7 @@ public class BattleCharacter implements Runnable {
         return img;
     }
 
-    //初始化光标线程对象
+    //初始化人物线程对象
     public BattleCharacter(JFrame frame, int x, int y) {
         //初始化图片帧及初始化图片组
         initBattleTime();
@@ -88,7 +88,7 @@ public class BattleCharacter implements Runnable {
         this.Frame = frame;
         this.x = x;
         this.Y = y;
-        this.Label = VOIDCursor();
+        this.Label = VOIDCharacter();
     }
 
     //初始化人物线程对象
@@ -133,13 +133,13 @@ public class BattleCharacter implements Runnable {
     }
 
     //创建一个新人物图片
-    private JLabel VOIDCursor() {
+    private JLabel VOIDCharacter() {
         //组件
-        JLabel cursor = new JLabel(getImg());
+        JLabel character = new JLabel(getImg());
         //设置组件 x Y 轴  宽高
-        cursor.setBounds(x, Y, W, H);
+        character.setBounds(x, Y, W, H);
         //返回人物组件
-        return cursor;
+        return character;
     }
 
     @Override
@@ -152,7 +152,11 @@ public class BattleCharacter implements Runnable {
                 //刷新
                 Refresh();
                 //当前人物帧刷新延迟
-                Thread.sleep(BattleTimeMap.get(num));
+                Long thisNum = BattleTimeMap.get(num);
+                if (thisNum == null) {
+                    System.out.println(num - 1);
+                }
+                Thread.sleep(thisNum);
             }
             //是否清除
             if (IsClear) {
@@ -168,7 +172,7 @@ public class BattleCharacter implements Runnable {
         //删除旧组件
         Frame.remove(Label);
         //新组件
-        Label = VOIDCursor();
+        Label = VOIDCharacter();
         //放入面板
         Frame.add(Label);
         //刷新面板
