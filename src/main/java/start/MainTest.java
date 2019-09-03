@@ -9,9 +9,13 @@ import common.input.KeyInput;
 import javax.swing.*;
 
 /**
- * 准备开发
+ * 测试界面
+ * 包括demo：
+ * 光标
+ * 地图人物行走
+ * 战斗人物动画
  */
-public class Main {
+public class MainTest {
 
     //人物光标demo
     public static Cursor CharacterCursor;
@@ -48,7 +52,7 @@ public class Main {
         CharacterMapCharacter = MapCharacter.VOID(Frame, 0, 0, 1);
 
         //增加一个人物战斗图实例并启动
-        CharacterBattleCharacter = BattleCharacter.VOID(Frame, 0, 0, "Battle_Paladin_F_Lance_Act_Normal_Time", Const.Battle_Paladin_F_Lance_Act_Normal);
+        CharacterBattleCharacter = BattleCharacter.VOID(Frame, 100, 0, "Battle_Paladin_F_Lance_Act_Normal_Time", Const.Battle_Paladin_F_Lance_Act_Normal);
 
 
     }

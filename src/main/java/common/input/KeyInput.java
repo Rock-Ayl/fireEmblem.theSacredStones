@@ -1,6 +1,6 @@
 package common.input;
 
-import start.Main;
+import start.MainTest;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -29,54 +29,54 @@ public class KeyInput implements KeyListener {
                 break;
             //左
             case 37:
-                Main.CharacterCursor.moveLeft();
-                Main.CharacterMapCharacter.moveLeft();
+                MainTest.CharacterCursor.moveLeft();
+                MainTest.CharacterMapCharacter.moveLeft();
                 break;
             //上
             case 38:
-                Main.CharacterCursor.moveUp();
-                Main.CharacterMapCharacter.moveUp();
+                MainTest.CharacterCursor.moveUp();
+                MainTest.CharacterMapCharacter.moveUp();
                 break;
             //右
             case 39:
-                Main.CharacterCursor.moveRight();
-                Main.CharacterMapCharacter.moveRight();
+                MainTest.CharacterCursor.moveRight();
+                MainTest.CharacterMapCharacter.moveRight();
                 break;
             //下
             case 40:
-                Main.CharacterCursor.moveDown();
-                Main.CharacterMapCharacter.moveDown();
+                MainTest.CharacterCursor.moveDown();
+                MainTest.CharacterMapCharacter.moveDown();
                 break;
             //z
             case 90:
-                Main.CharacterCursor.start();
+                MainTest.CharacterCursor.start();
                 break;
             //x
             case 88:
-                Main.CharacterCursor.stop();
+                MainTest.CharacterCursor.stop();
                 break;
             //c
             case 67:
-                Main.CharacterCursor.clear();
+                MainTest.CharacterCursor.clear();
                 break;
             //a
             case 65:
-                Main.CharacterCursor.switchType(0);
-                Main.CharacterMapCharacter.switchType(0);
+                MainTest.CharacterCursor.switchType(0);
+                MainTest.CharacterMapCharacter.switchType(0);
                 break;
             //s
             case 83:
-                Main.CharacterCursor.switchType(1);
-                Main.CharacterMapCharacter.switchType(1);
+                MainTest.CharacterCursor.switchType(1);
+                MainTest.CharacterMapCharacter.switchType(1);
                 break;
             //d
             case 68:
-                Main.CharacterCursor.switchType(2);
-                Main.CharacterMapCharacter.switchType(2);
+                MainTest.CharacterCursor.switchType(2);
+                MainTest.CharacterMapCharacter.switchType(2);
                 break;
             //q
             case 81:
-                Main.CharacterCursor.switchXY(30, 50);
+                MainTest.CharacterCursor.switchXY(30, 50);
                 break;
         }
     }
