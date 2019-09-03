@@ -4,7 +4,7 @@ import common.Const;
 import common.animation.BattleCharacter;
 import common.animation.Cursor;
 import common.animation.MapCharacter;
-import common.input.KeyInput;
+import common.util.SwingUtil;
 
 import javax.swing.*;
 
@@ -15,7 +15,7 @@ import javax.swing.*;
  * 地图人物行走
  * 战斗人物动画
  */
-public class MainTest {
+public class AnimationTest {
 
     //人物光标demo
     public static Cursor CharacterCursor;
@@ -33,17 +33,8 @@ public class MainTest {
 
     public static void main(String[] args) {
 
-        //创建界面-边框及标题
-        Frame = new JFrame("火焰之纹章-圣光之魔石");
-        Frame.pack();
-        //设置界面宽高
-        Frame.setSize(Width, Height);
-        //设置界面是否可见
-        Frame.setVisible(true);
-        //设置用户单击窗口的关闭按钮时程序执行的操作(关系窗口)
-        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //设置键盘监听器
-        Frame.addKeyListener(new KeyInput());
+        //初始化一个界面
+        Frame = SwingUtil.VOIDJFrame("火焰之纹章-圣光之魔石", Width, Height);
 
         //增加一个光标实例并启动
         CharacterCursor = Cursor.VOID(Frame, 100, 100, 0);
