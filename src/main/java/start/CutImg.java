@@ -15,6 +15,6 @@ public class CutImg {
          * cutH:每一块小图的高
          * imgPath:小图路径
          */
-        ImgUtil.cutImag(192, 192, Const.Battle_Paladin_F_Lance_Act_Normal);
+        ImgUtil.cutImag(32, 32, Const.Map_Laus);
     }
 }

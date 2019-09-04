@@ -50,6 +50,7 @@ public class ImgUtil {
                     String fileName = FileUtil.setNumForFile(imgPath, num);
                     //写入带着编号的子文件
                     ImageIO.write(buffImg, FileUtil.getFileExtension(fileName), new File(fileName));
+                    System.out.println("处理完编号:" + num + "的子图片");
                     //编号+1
                     num++;
                 }
