@@ -41,6 +41,11 @@ public class Const {
     //todo 圣骑士-女-战斗-无持有-被击中
     public final static String Battle_Paladin_F_Nothing_Injured = FilenameUtils.separatorsToSystem(PaladinResourcesPath + "battle_paladin_f_injured/nothing/Battle_Paladin_F_Injured.png");
 
+    //todo 地图资源
+    public final static String MapResourcesPath = FilenameUtils.separatorsToSystem(ResourcesPath + "map/");
+    //todo 地图-外景
+    public final static String Map_Laus = FilenameUtils.separatorsToSystem(MapResourcesPath + "laus/Laus.png");
+
 
     /**
      * 获取项目路径
